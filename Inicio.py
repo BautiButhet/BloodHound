@@ -7,38 +7,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-#######para meterle un fondo###########
-import base64
-
-# Leer la imagen desde el archivo local y convertirla a base64
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-# Ruta a tu imagen local
-img_path = 'fondo-medico-abstracto-iconos-simbolos-planos-diseno-plantillas-concepto-e-idea-tecnologia-sanitaria-medicina-innovacion-salud-ciencia-e-investigacion_120542-693.avif'
-
-# Convertir la imagen a base64
-img_base64 = get_base64_of_bin_file(img_path)
-
-# Crear el estilo CSS con la imagen base64
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img_base64}");
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
-background-attachment: local;
-}}
-[data-testid="stHeader"] {{
-background: rgba(0,0,0,0);
-}}
-</style>
-"""
-# Insertar el estilo CSS en la aplicación de Streamlit
-st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align:center;'>BloodHound</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center;'>Track your blood</h3>", unsafe_allow_html=True)
