@@ -21,7 +21,7 @@ with col4:
     pass
 with col5:
     if st.button("Inicio"):
-        st.switch_page("pages/Inicio.py")
+        st.switch_page("Inicio.py")
 
 st.title('Visualización de Estudios')
 if 'estado' not in st.session_state:

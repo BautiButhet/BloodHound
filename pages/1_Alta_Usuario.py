@@ -10,6 +10,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    if st.button("<-"):
+        st.switch_page("Inicio.py")
+with col2:
+    pass
+with col3:
+    pass
+with col4:
+    pass
+with col5:
+    if st.button("->"):
+        st.switch_page("pages/2_Cargar_Estudio.py")
 
 archivo_csv = 'examination.csv'
 df = pd.read_csv(archivo_csv)
