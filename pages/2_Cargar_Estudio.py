@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="BloodHound: Track your Blood",
     page_icon=":🩸:",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
