@@ -27,7 +27,7 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     if st.button("Iniciar Sesión"):
         if dni_exists(dni) and password_exists(password):
-            st.success("Inicio de sesión exitoso")
+            output_error=st.success("Inicio de sesión exitoso")
             st.session_state['estado'] = 'Autorizado'
         else:
             output_error.error("Usuario o Contraseña incorrectos")
