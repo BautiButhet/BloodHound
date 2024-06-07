@@ -15,7 +15,7 @@ with col1:
         st.switch_page("pages/2_Cargar_Estudio.py")
 
 with col15:
-    if st.button("Inicio"):
+    if st.button("⌂"):
         st.switch_page("Inicio.py")
 
 st.title('Visualización de Estudios')
