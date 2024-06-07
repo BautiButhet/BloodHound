@@ -56,7 +56,7 @@ if (password == confirm_password) and dni != '' and password != '':
     sobrepeso = 1 if sobrepeso_aux == "Si" else 0
     output_sobrepeso = st.empty()
 
-    st.write("¿Alguna vez un médico u otro profesional de la salud que tienes diabetes?")
+    st.write("¿Alguna vez un médico u otro profesional de la salud te ha dicho que tienes diabetes?")
     diabetes_aux = st.radio("Selecciona una opción:", ["No", "Si"], key="diabetes", index = None)
     diabetes = 1 if diabetes_aux == "Si" else 2
     output_diabetes = st.empty()
