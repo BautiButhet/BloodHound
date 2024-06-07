@@ -26,9 +26,9 @@ st.markdown("<p style='text-align:center; color:#DC143C;'>Esta herramienta no es
             + "diagnosticar a los pacientes. Es fundamental contar con la participación de personal "
             + "médico antes de tomar decisiones relacionadas con la salud.</p>", unsafe_allow_html=True)
 
-col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15 = st.columns(15)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     pass
-with col8:
+with col3:
     if st.button("COMENZAR"):
         st.switch_page("pages/1_Alta_Usuario.py")
