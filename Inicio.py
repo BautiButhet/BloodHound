@@ -6,6 +6,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    pass
+with col2:
+    pass
+with col3:
+    pass
+with col4:
+    pass
+with col5:
+    if st.button("->"):
+        st.switch_page("pages/1_Alta_Usuariopy")
+
 st.markdown("<h1 style='text-align:center;'>BloodHound</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center;'>Track your blood</h3>", unsafe_allow_html=True)
 
