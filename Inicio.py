@@ -18,7 +18,7 @@ with col4:
 with col5:
     pass
 with col6:
-    if st.button("⮕"):
+    if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
 
 st.markdown("<h1 style='text-align:center;'>BloodHound</h1>", unsafe_allow_html=True)

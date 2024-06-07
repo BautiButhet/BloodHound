@@ -11,7 +11,7 @@ st.set_page_config(
 )
 col1, col2, col3, col4, col5, col6 = st.columns(6)
 with col1:
-    if st.button("⬅"):
+    if st.button("🡄"):
         st.switch_page("pages/1_Alta_Usuario.py")
 with col2:
     pass
@@ -22,7 +22,7 @@ with col4:
 with col5:
     pass
 with col6:
-    if st.button("⮕"):
+    if st.button("🡆"):
         st.switch_page("pages/3_Analisis_Estudio.py")
 
 st.title('Carga de Estudios')
