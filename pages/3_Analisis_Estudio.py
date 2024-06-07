@@ -11,7 +11,7 @@ st.set_page_config(
 )
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    if st.button("🡆"):
+    if st.button("<-"):
         st.switch_page("pages/2_Cargar_Estudio.py")
 with col2:
     pass
