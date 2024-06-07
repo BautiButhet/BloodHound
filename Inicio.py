@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
-col1, col2, col3, col4, col5, col6 = st.columns(6)
+col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns(9)
 with col1:
     pass
 with col2:
@@ -18,6 +18,12 @@ with col4:
 with col5:
     pass
 with col6:
+    pass
+with col7:
+    pass
+with col8:
+    pass
+with col9:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
 
