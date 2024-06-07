@@ -29,6 +29,6 @@ st.markdown("<p style='text-align:center; color:#DC143C;'>Esta herramienta no es
 col1, col2, col3 = st.columns(3)
 with col1:
     pass
-with col3:
+with col2:
     if st.button("COMENZAR"):
         st.switch_page("pages/1_Alta_Usuario.py")
