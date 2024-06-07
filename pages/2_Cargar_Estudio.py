@@ -9,6 +9,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    if st.button("🡆"):
+        st.switch_page("pages/1_Alta_Usuario.py")
+with col2:
+    pass
+with col3:
+    pass
+with col4:
+    pass
+with col5:
+    if st.button("🡆"):
+        st.switch_page("pages/3_Analisis_Estudio.py")
 
 st.title('Carga de Estudios')
 if 'estado' not in st.session_state:
