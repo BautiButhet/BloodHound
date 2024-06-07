@@ -9,12 +9,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
-col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15 = st.columns(15)
+col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14 = st.columns(14)
 with col1:
     if st.button("🡄"):
         st.switch_page("pages/2_Cargar_Estudio.py")
 
-with col15:
+with col14:
     if st.button("Inicio"):
         st.switch_page("Inicio.py")
 
