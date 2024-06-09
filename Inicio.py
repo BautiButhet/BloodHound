@@ -15,6 +15,7 @@ with col15:
         st.switch_page("pages/1_Alta_Usuario.py")
 
 import base64
+
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
 
 # Leer la imagen desde el archivo local y convertirla a base64
