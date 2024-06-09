@@ -119,7 +119,9 @@ if st.session_state['estado'] == 'Autorizado':
 
             # Obtener el valor medio (valor ideal) de la variable seleccionada
             valor_ideal = filtered_data.loc[filtered_data['parametro'] == variable, 'valor_ideal'].values[0]
-
+            
+            valor_ideal_mayor = valor_ideal + 0.1*valor_ideal
+            valor_ideal_menor = valor_ideal - 0.1*valor_ideal
             # Crear el gráfico de líneas
             line = alt.Chart(data).mark_line().encode(
                 x=alt.X('fecha:T', axis=alt.Axis(title='Fecha de estudio', format='%d/%m/%Y')),
