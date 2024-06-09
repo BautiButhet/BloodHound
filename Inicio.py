@@ -7,12 +7,22 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
-col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15 = st.columns(15)
-with col1:
-    pass
-with col15:
-    if st.button("🡆"):
-        st.switch_page("pages/1_Alta_Usuario.py")
+
+
+animation_url = "https://lottie.host/embed/98e8181d-78c2-4352-9340-7432bb81b41c/rW5jxQ0TwV.json"
+
+# Crea un contenedor div con la animación Lottie superpuesta
+st.write(
+    f"""
+    <div style="position:relative; width:300px; height:300px;">
+        <iframe src="{animation_url}" style="position:absolute; top:0; left:0; width:100%; height:100%;" frameborder="0"></iframe>
+        <form action="pages/1_Alta_Usuario.py">
+            <input type="submit" value="" style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:transparent; border:none; cursor:pointer;">
+        </form>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 import base64
 
