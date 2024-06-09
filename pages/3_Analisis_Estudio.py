@@ -137,10 +137,11 @@ if st.session_state['estado'] == 'Autorizado':
             )
 
             # Crear la línea horizontal para el valor medio
-            mean_line = alt.Chart(pd.DataFrame({'y': [valor_ideal]})).mark_rule(color='blue').encode(
+            mean_line_mayor = alt.Chart(pd.DataFrame({'y': [valor_ideal_mayor]})).mark_rule(color='red').encode(
                 y='y:Q'
             )
-
+            mean_line_menor = alt.Chart(pd.DataFrame({'y': [valor_ideal_menor]})).mark_rule(color='red').encode(
+                y='y:Q'
             # Crear el texto para la línea de valor ideal
             text = alt.Chart(pd.DataFrame({
                 'y': [valor_ideal], 
@@ -157,7 +158,7 @@ if st.session_state['estado'] == 'Autorizado':
             )
 
             # Combinar línea, puntos, línea de media y texto en un solo gráfico
-            chart = (line + points + mean_line + text).properties(
+            chart = (line + points + mean_line_mayor + mean_line_menor + text).properties(
                 title=f'Evolución de {variable}'
             )
 
