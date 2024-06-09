@@ -113,7 +113,7 @@ if (password == confirm_password) and dni != '' and password != '':
 
     animation_url = "https://lottie.host/embed/b773200d-26da-4001-acb1-454e2237be50/XThljo9rsB.json"
 
-    if st.write(
+    st.write(
     f"""
     <div style="position:relative; width:300px; height:300px;">
         <iframe src="{animation_url}" style="position:absolute; top:0; left:0; width:100%; height:100%;" frameborder="0"></iframe>
@@ -123,7 +123,9 @@ if (password == confirm_password) and dni != '' and password != '':
     </div>
     """,
     unsafe_allow_html=True
-):
+    )
+
+    if st.button("Guardar"):
         dni_exists_q = dni_exists(dni)
         com.iframe("https://lottie.host/embed/47e9d560-dcd6-4f7a-94a9-b07ae95bef85/ifdQjDqgB7.json")
         if dni_exists_q:
