@@ -25,7 +25,7 @@ def get_base64_of_bin_file(bin_file):
     return base64.b64encode(data).decode()
 
 # Ruta a tu imagen local
-img_path = "C:/Users/josef/OneDrive/Documents/PALI/BloodHound/papers.co-sm55-pastel-blue-red-morning-blur-gradation-28-wallpaper.jpg"
+img_path = "papers.co-sm55-pastel-blue-red-morning-blur-gradation-28-wallpaper.jpg"
 
 # Convertir la imagen a base64
 img_base64 = get_base64_of_bin_file(img_path)
