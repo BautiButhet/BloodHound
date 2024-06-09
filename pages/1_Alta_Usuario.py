@@ -3,6 +3,7 @@ import streamlit as st
 from datetime import datetime
 from funciones import insert_user, dni_exists, perfil_paciente
 import pandas as pd
+import base64
 
 st.set_page_config(
     page_title="BloodHound: Track your Blood",
@@ -19,7 +20,6 @@ with col15:
     if st.button("🡆"):
         st.switch_page("pages/2_Cargar_Estudio.py")
 
-# Leer la imagen desde el archivo local y convertirla a base64
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -48,7 +48,6 @@ background: rgba(0,0,0,0);
 """
 # Insertar el estilo CSS en la aplicación de Streamlit
 st.markdown(page_bg_img, unsafe_allow_html=True)
-
 
 archivo_csv = 'examination.csv'
 df = pd.read_csv(archivo_csv)
