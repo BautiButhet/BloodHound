@@ -48,8 +48,27 @@ background: rgba(0,0,0,0);
 # Insertar el estilo CSS en la aplicación de Streamlit
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align:center;'>BloodHound</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align:center;'>Track your blood</h3>", unsafe_allow_html=True)
+titulo_css = """
+    <style>
+        .titulo-custom {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .subtitulo-custom {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 1.5em;
+        }
+    </style>
+"""
+
+# Aplicar el estilo CSS al título y subtítulo usando markdown
+st.markdown(titulo_css, unsafe_allow_html=True)
+
+# Mostrar el título y subtítulo con la clase CSS personalizada
+st.markdown("<h1 class='titulo-custom'>BloodHound</h1>", unsafe_allow_html=True)
+st.markdown("<h3 class='subtitulo-custom'>Track your blood</h3>", unsafe_allow_html=True)
 
 st.markdown(
     """
