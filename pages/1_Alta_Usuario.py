@@ -112,6 +112,7 @@ if (password == confirm_password) and dni != '' and password != '':
 
     if st.button("Guardar"):
         dni_exists_q = dni_exists(dni)
+        com.iframe("https://lottie.host/embed/47e9d560-dcd6-4f7a-94a9-b07ae95bef85/ifdQjDqgB7.json")
         if dni_exists_q:
             output_dni.error("Error, este DNI ya está registrado en la base de datos.")
             error_message += "DNI, " 
