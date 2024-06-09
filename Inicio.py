@@ -1,12 +1,5 @@
 import streamlit as st
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 import streamlit.components.v1 as com
-
-=======
->>>>>>> 77079b7c0617af110d90e961a5acd5a9ab00a404
->>>>>>> Stashed changes
 # Configuración de la página
 st.set_page_config(
     page_title="BloodHound: Track your Blood",
@@ -20,8 +13,6 @@ with col1:
 with col15:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
-<<<<<<< Updated upstream
-=======
 
 import base64
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
