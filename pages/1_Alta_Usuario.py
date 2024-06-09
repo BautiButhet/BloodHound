@@ -4,6 +4,7 @@ from datetime import datetime
 from funciones import insert_user, dni_exists, perfil_paciente
 import pandas as pd
 import base64
+import streamlit.components.v1 as com
 
 st.set_page_config(
     page_title="BloodHound: Track your Blood",
