@@ -75,7 +75,7 @@ st.markdown(
     <style>
     .custom-font {
         font-family: 'Poppins', sans-serif;
-        font-size: 2.5em;
+        font-size: 20px;
         color: #000000;
     }
     </style>
