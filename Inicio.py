@@ -47,7 +47,6 @@ background: rgba(0,0,0,0);
 """
 # Insertar el estilo CSS en la aplicación de Streamlit
 st.markdown(page_bg_img, unsafe_allow_html=True)
->>>>>>> Stashed changes
 
 st.markdown("<h1 style='text-align:center;'>BloodHound</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center;'>Track your blood</h3>", unsafe_allow_html=True)
