@@ -55,7 +55,7 @@ st.markdown(
     """
     <style>
     .custom-font {
-        font-family: 'Roboto', cursive, sans-serif;
+        font-family: 'Poppins', cursive, sans-serif;
         font-size: 20px;
         color: #000000;
     }
