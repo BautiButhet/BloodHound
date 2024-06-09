@@ -19,6 +19,37 @@ with col15:
     if st.button("🡆"):
         st.switch_page("pages/2_Cargar_Estudio.py")
 
+# Leer la imagen desde el archivo local y convertirla a base64
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Ruta a tu imagen local
+img_path = "papers.co-sm55-pastel-blue-red-morning-blur-gradation-28-wallpaper.jpg"
+
+# Convertir la imagen a base64
+img_base64 = get_base64_of_bin_file(img_path)
+
+# Crear el estilo CSS con la imagen base64
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("data:image/png;base64,{img_base64}");
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+</style>
+"""
+# Insertar el estilo CSS en la aplicación de Streamlit
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
 archivo_csv = 'examination.csv'
 df = pd.read_csv(archivo_csv)
 st.title('Alta Usuario')
