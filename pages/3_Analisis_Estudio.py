@@ -144,6 +144,7 @@ if st.session_state['estado'] == 'Autorizado':
             )
             mean_line_menor = alt.Chart(pd.DataFrame({'y': [valor_ideal_menor]})).mark_rule(color='red').encode(
                 y='y:Q'
+            )
             # Crear el texto para la línea de valor ideal
             text = alt.Chart(pd.DataFrame({
                 'y': [valor_ideal], 
