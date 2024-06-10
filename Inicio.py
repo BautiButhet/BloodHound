@@ -119,27 +119,13 @@ with tab3:
     """, unsafe_allow_html=True)
 with tab4:
    st.header("Contactanos")
-   col1, col2 = st.columns(2)
-   with col1:
-    st.markdown("""
-    <p class="custom-font">
-               <ul>
-                    <li>jbbuthet@mail.austral.edu.ar</li>
-                    <li>iricca@mail.austral.edu.ar</li>
-                    <li>goxoby@mail.austral.edu.ar</li>
-                    <li>eqtenreyroanaya@mail.austral.edu.ar</li>
-             </ul>
-            </i></h4>
-            </div>
-    """, unsafe_allow_html=True)
-    with col2:
-      st.markdown("""
+   st.markdown("""
         <p class="custom-font">
                <ul>
-                    <li>+54 9 11 3844-1566</li>
-                    <li>+54 9 3489 36-4147</li>
-                    <li>+54 9 11 7026-5949</li>
-                    <li>+54 9 11 2614-1859</li>
+                    <li>jbbuthet@mail.austral.edu.ar            (+54 9 11 3844-1566)</li>
+                    <li>iricca@mail.austral.edu.ar              (+54 9 3489 36-4147)</li>
+                    <li>goxoby@mail.austral.edu.ar              (+54 9 11 7026-5949)</li>
+                    <li>eqtenreyroanaya@mail.austral.edu.ar     (+54 9 11 2614-1859)</li>
              </ul>
             </i></h4>
             </div>
