@@ -111,98 +111,107 @@ if (password == confirm_password) and dni != '' and password != '':
 
     error_message = ""
     
-    if st.button("Guardar"):
-        dni_exists_q = dni_exists(dni)
-        com.iframe("https://lottie.host/embed/47e9d560-dcd6-4f7a-94a9-b07ae95bef85/ifdQjDqgB7.json")
-        if dni_exists_q:
-            output_dni.error("Error, este DNI ya está registrado en la base de datos.")
-            error_message += "DNI, " 
-        bar = st.progress(5, text = "Analizando existencia de DNI en la base de datos...")
-        time.sleep(0.725)
-        if not dni or not dni.isdigit():
-            output_dni.error("Error, por favor completa este campo correctamente.")
-            error_message += "DNI, "
-        bar.progress(10, text = "Analizando si DNI es de tipo numerico...")
-        time.sleep(0.725)
-        if not password or not confirm_password or (password != confirm_password):
-            output_password.error("Error, por favor completa este campo correctamente.")
-            error_message += "Contraseña, "
-        bar.progress(15, text = "Analizando si las contraseñas coinciden...")
-        time.sleep(0.725)
-        if not nombre or not nombre.isalpha():
-            output_nombre.error("Error, por favor completa este campo correctamente.")
-            error_message += "Nombre, "
-        bar.progress(20, text = "Analizando si Nombre es de tipo caracter...")
-        time.sleep(0.725)
-        if not apellido or not apellido.isalpha():
-            output_apellido.error("Error, por favor completa este campo correctamente.")
-            error_message += "Apellido, "
-        bar.progress(30, text = "Analizando si Apellido es de tipo caracter...")
-        time.sleep(0.725)
-        if not fecha_nacimiento:
-            output_fecha_nacimiento.error("Error, por favor selecciona tu fecha de nacimiento.")
-            error_message += "Fecha de Nacimiento, "
-        bar.progress(40, text = "Analizando si se introdujo fecha de nacimiento...")
-        time.sleep(0.725)
-        if not genero_aux:
-            output_genero.error("Error, por favor completa este campo correctamente.")
-            error_message += "Genero, "
-        bar.progress(50, text = "Analizando si se introdujo genero...")
-        time.sleep(0.725)
-        if not altura or not altura.isdigit():
-            output_altura.error("Error, por favor completa este campo correctamente.")
-            error_message += "Altura, "
-        elif int(altura) > df['BMXHT'].max() :
-            output_altura.error("El valor ingresado es mayor al maximo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
-            error_message += "Altura, "
-        elif int(altura) < df['BMXHT'].min() :
-            output_altura.error("El valor ingresado es menor al minimo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
-            error_message += "Altura, "
-        bar.progress(60, text = "Analizando posibles errores al introducir Altura...")
-        time.sleep(0.725)
-        if not peso or not peso.isdigit():
-            output_peso.error("Error, por favor completa este campo correctamente.")
-            error_message += "Peso, "
-        elif int(peso) < df['BMXWT'].min() :
-            output_peso.error("El valor ingresado es menor al minimo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
-            error_message += "Peso, "
-        elif int(peso) > df['BMXWT'].max() :
-            output_peso.error("El valor ingresado es mayor al maximo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
-            error_message += "Peso, "
-        bar.progress(65, text = "Analizando posibles errores al introducir Peso...")
-        time.sleep(0.725)
-        if not colesterol_aux:
-            output_colesterol.error("Error, por favor completa este campo correctamente.")
-            error_message += "Colesterol, "
-        bar.progress(70, text = "Analizando posibles errores al introducir Colesterol...")
-        time.sleep(0.725)
-        if not anemia_aux:
-            output_anemia.error("Error, por favor completa este campo correctamente.")
-            error_message += "Anemia, "
-        bar.progress(75, text = "Analizando posibles errores al introducir Anemia...")
-        time.sleep(0.725)
-        if not sobrepeso_aux:
-            output_sobrepeso.error("Error, por favor completa este campo correctamente.")
-            error_message += "Sobrepeso, "
-        bar.progress(80, text = "Analizando posibles errores al introducir Sobrepeso...")
-        time.sleep(0.725)
-        if not diabetes_aux:
-            output_diabetes.error("Error, por favor completa este campo correctamente.")
-            error_message += "Diabetes, "
-        bar.progress(85, text = "Analizando posibles errores al introducir Diabetes...")
-        if not fumadoraux1:
-            output_fumador.error("Error, por favor completa este campo correctamente.")
-            error_message += "Fumador, "
-        bar.progress(90, text = "Analizando posibles errores al introducir Fumador...")
-        time.sleep(0.725)
-        if fumadoraux1 == "Si" and not fumadoraux2:
-            output_fumador.error("Error, por favor completa este campo correctamente.")
-            error_message += "Fumador, "
-        bar.progress(95, text = "Analizando posibles errores al introducir Fumador...")
-        time.sleep(0.725)
-        if error_message:
-            st.sidebar.error("Error: Las siguientes variables no han sido completadas: " + error_message[:-2])  # Elimina la última coma y el espacio
-            bar.progress(0)
+    # URL del iframe de Lottie
+    iframe_html = """
+    <iframe src="https://lottie.host/embed/b773200d-26da-4001-acb1-454e2237be50/XThljo9rsB.json" style="width:100px; height:100px; border:none; overflow:hidden;" allow="autoplay"></iframe>
+    """
+
+    # Crear el layout con columnas para alinear el botón y la animación
+    col1, col2 = st.columns([1, 3])
+
+
+    with col1:
+        if st.button("Guardar"):
+            com.iframe("https://lottie.host/embed/47e9d560-dcd6-4f7a-94a9-b07ae95bef85/ifdQjDqgB7.json")
+            if dni_exists_q:
+                output_dni.error("Error, este DNI ya está registrado en la base de datos.")
+                error_message += "DNI, " 
+            bar = st.progress(5, text = "Analizando existencia de DNI en la base de datos...")
+            time.sleep(0.725)
+            if not dni or not dni.isdigit():
+                output_dni.error("Error, por favor completa este campo correctamente.")
+                error_message += "DNI, "
+            bar.progress(10, text = "Analizando si DNI es de tipo numerico...")
+            time.sleep(0.725)
+            if not password or not confirm_password or (password != confirm_password):
+                output_password.error("Error, por favor completa este campo correctamente.")
+                error_message += "Contraseña, "
+            bar.progress(15, text = "Analizando si las contraseñas coinciden...")
+            time.sleep(0.725)
+            if not nombre or not nombre.isalpha():
+                output_nombre.error("Error, por favor completa este campo correctamente.")
+                error_message += "Nombre, "
+            bar.progress(20, text = "Analizando si Nombre es de tipo caracter...")
+            time.sleep(0.725)
+            if not apellido or not apellido.isalpha():
+                output_apellido.error("Error, por favor completa este campo correctamente.")
+                error_message += "Apellido, "
+            bar.progress(30, text = "Analizando si Apellido es de tipo caracter...")
+            time.sleep(0.725)
+            if not fecha_nacimiento:
+                output_fecha_nacimiento.error("Error, por favor selecciona tu fecha de nacimiento.")
+                error_message += "Fecha de Nacimiento, "
+            bar.progress(40, text = "Analizando si se introdujo fecha de nacimiento...")
+            time.sleep(0.725)
+            if not genero_aux:
+                output_genero.error("Error, por favor completa este campo correctamente.")
+                error_message += "Genero, "
+            bar.progress(50, text = "Analizando si se introdujo genero...")
+            time.sleep(0.725)
+            if not altura or not altura.isdigit():
+                output_altura.error("Error, por favor completa este campo correctamente.")
+                error_message += "Altura, "
+            elif int(altura) > df['BMXHT'].max() :
+                output_altura.error("El valor ingresado es mayor al maximo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
+                error_message += "Altura, "
+            elif int(altura) < df['BMXHT'].min() :
+                output_altura.error("El valor ingresado es menor al minimo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
+                error_message += "Altura, "
+            bar.progress(60, text = "Analizando posibles errores al introducir Altura...")
+            time.sleep(0.725)
+            if not peso or not peso.isdigit():
+                output_peso.error("Error, por favor completa este campo correctamente.")
+                error_message += "Peso, "
+            elif int(peso) < df['BMXWT'].min() :
+                output_peso.error("El valor ingresado es menor al minimo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
+                error_message += "Peso, "
+            elif int(peso) > df['BMXWT'].max() :
+                output_peso.error("El valor ingresado es mayor al maximo esperado, ¿esta seguro de que lo ha ingresado correctamente?")
+                error_message += "Peso, "
+            bar.progress(65, text = "Analizando posibles errores al introducir Peso...")
+            time.sleep(0.725)
+            if not colesterol_aux:
+                output_colesterol.error("Error, por favor completa este campo correctamente.")
+                error_message += "Colesterol, "
+            bar.progress(70, text = "Analizando posibles errores al introducir Colesterol...")
+            time.sleep(0.725)
+            if not anemia_aux:
+                output_anemia.error("Error, por favor completa este campo correctamente.")
+                error_message += "Anemia, "
+            bar.progress(75, text = "Analizando posibles errores al introducir Anemia...")
+            time.sleep(0.725)
+            if not sobrepeso_aux:
+                output_sobrepeso.error("Error, por favor completa este campo correctamente.")
+                error_message += "Sobrepeso, "
+            bar.progress(80, text = "Analizando posibles errores al introducir Sobrepeso...")
+            time.sleep(0.725)
+            if not diabetes_aux:
+                output_diabetes.error("Error, por favor completa este campo correctamente.")
+                error_message += "Diabetes, "
+            bar.progress(85, text = "Analizando posibles errores al introducir Diabetes...")
+            if not fumadoraux1:
+                output_fumador.error("Error, por favor completa este campo correctamente.")
+                error_message += "Fumador, "
+            bar.progress(90, text = "Analizando posibles errores al introducir Fumador...")
+            time.sleep(0.725)
+            if fumadoraux1 == "Si" and not fumadoraux2:
+                output_fumador.error("Error, por favor completa este campo correctamente.")
+                error_message += "Fumador, "
+            bar.progress(95, text = "Analizando posibles errores al introducir Fumador...")
+            time.sleep(0.725)
+            if error_message:
+                st.sidebar.error("Error: Las siguientes variables no han sido completadas: " + error_message[:-2])  # Elimina la última coma y el espacio
+                bar.progress(0)
 
         else:
 
@@ -214,3 +223,6 @@ if (password == confirm_password) and dni != '' and password != '':
             st.write("Aguarde unos instantes...")
             time.sleep(2.5)
             st.switch_page("pages/2_Cargar_Estudio.py")
+
+    with col2:
+    st.markdown(iframe_html, unsafe_allow_html=True)
