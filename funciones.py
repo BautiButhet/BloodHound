@@ -139,7 +139,7 @@ def consultar_estudios_fecha(dni, fecha):
     
     try:
         query = """SELECT 
-    'red_blood_cc' AS parametro,
+    'red_blood_cc' AS variable,
     usuarios.estudios.red_blood_cc AS valor_real,
     usuarios.pacientes.media_red_blood_cc AS valor_ideal,
     CONCAT(
@@ -157,7 +157,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'hematocrit' AS parametro,
+    'hematocrit' AS variable,
     usuarios.estudios.hematocrit AS valor_real,
     usuarios.pacientes.media_hematocrit AS valor_ideal,
     CONCAT(
@@ -175,7 +175,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'insulin' AS parametro,
+    'insulin' AS variable,
     usuarios.estudios.insulin AS valor_real,
     usuarios.pacientes.media_insulin AS valor_ideal,
     CONCAT(
@@ -193,7 +193,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'two_hour_glucose' AS parametro,
+    'two_hour_glucose' AS variable,
     usuarios.estudios.two_hour_glucose AS valor_real,
     usuarios.pacientes.media_two_hour_glucose AS valor_ideal,
     CONCAT(
@@ -211,7 +211,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'triglyceride' AS parametro,
+    'triglyceride' AS variable,
     usuarios.estudios.triglyceride AS valor_real,
     usuarios.pacientes.media_triglyceride AS valor_ideal,
     CONCAT(
@@ -229,7 +229,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'total_cholesterol' AS parametro,
+    'total_cholesterol' AS variable,
     usuarios.estudios.total_cholesterol AS valor_real,
     usuarios.pacientes.media_total_cholesterol AS valor_ideal,
     CONCAT(
@@ -247,7 +247,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'direct_hdl_cholesterol' AS parametro,
+    'direct_hdl_cholesterol' AS variable,
     usuarios.estudios.direct_hdl_cholesterol AS valor_real,
     usuarios.pacientes.media_direct_hdl_cholesterol AS valor_ideal,
     CONCAT(
@@ -265,7 +265,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'ldl_cholesterol' AS parametro,
+    'ldl_cholesterol' AS variable,
     usuarios.estudios.ldl_cholesterol AS valor_real,
     usuarios.pacientes.media_ldl_cholesterol AS valor_ideal,
     CONCAT(
@@ -283,7 +283,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'uric_acid' AS parametro,
+    'uric_acid' AS variable,
     usuarios.estudios.uric_acid AS valor_real,
     usuarios.pacientes.media_uric_acid AS valor_ideal,
     CONCAT(
@@ -301,7 +301,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'blood_pressure_status' AS parametro,
+    'blood_pressure_status' AS variable,
     usuarios.estudios.blood_pressure_status AS valor_real,
     usuarios.pacientes.media_blood_pressure_status AS valor_ideal,
     CONCAT(
@@ -319,7 +319,7 @@ WHERE
 UNION ALL
 
 SELECT
-    'blood_pressure_time_seconds' AS parametro,
+    'blood_pressure_time_seconds' AS variable,
     usuarios.estudios.blood_pressure_time_seconds AS valor_real,
     usuarios.pacientes.media_blood_pressure_time_seconds AS valor_ideal,
     CONCAT(
@@ -424,3 +424,50 @@ def perfil_paciente(fecha_nacimiento,altura, genero, peso, fumador, diabetes):
     media_uric_acid,
     media_blood_pressure_status,
     media_blood_pressure_time_seconds)
+
+
+# Función para aplicar el estilo condicional
+# Función para aplicar el estilo condicional
+def highlight_valor_real(row):
+    val_real = row['valor_real']
+    val_ideal = row['valor_ideal']
+    if pd.isna(val_real) or pd.isna(val_ideal):
+        return ['' for col in row.index]
+    
+    try:
+        min_val = val_ideal * 0.9
+        max_val = val_ideal * 1.1
+        
+        if min_val <= val_real <= max_val:
+            # Calculate the percentage difference within the range (0 to 1)
+            percentage_diff = (val_real - min_val) / (max_val - min_val)
+            # Convert the percentage difference into a light green shade
+            green_intensity = int(100 * (1 - percentage_diff)) + 155  # light green
+            color = f'background-color: rgba(144, 238, 144, {green_intensity / 255})'
+            return [color if col == 'valor_real' else '' for col in row.index]
+        else:
+            # Calculate the percentage difference from the nearest bound (min_val or max_val)
+            if val_real < min_val:
+                percentage_diff = (min_val - val_real) / val_ideal
+            else:
+                percentage_diff = (val_real - max_val) / val_ideal
+            
+            # Cap the percentage_diff at 1 (100%) for the gradient calculation
+            percentage_diff = min(percentage_diff, 1.0)
+            
+            # Convert the percentage difference into a light red shade
+            red_intensity = int(100 * percentage_diff) + 155  # light red
+            color = f'background-color: rgba(255, 182, 193, {red_intensity / 255})'
+            return [color if col == 'valor_real' else '' for col in row.index]
+    except Exception as e:
+        return ['' for col in row.index]
+
+def check_range(value_real, value_ideal):
+                if pd.isna(value_ideal) or pd.isna(value_real):
+                    return False
+                try:
+                    min_val = value_ideal * 0.9
+                    max_val = value_ideal * 1.1
+                    return min_val <= value_real <= max_val
+                except:
+                    return False

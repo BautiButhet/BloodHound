@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from funciones import dni_exists,password_exists,consultar_estudios,consultar_estudios_fecha
+from funciones import dni_exists,password_exists,consultar_estudios,consultar_estudios_fecha,highlight_valor_real,check_range
 import base64
 
 st.set_page_config(
@@ -79,52 +79,9 @@ if st.session_state['estado'] == 'Autorizado':
             selected_date = pd.to_datetime(option)
             filtered_data = consultar_estudios_fecha(dni, selected_date)
                 # Definir la función para verificar si el valor está dentro del rango del 10% alrededor del valor ideal
-            def check_range(value_real, value_ideal):
-                if pd.isna(value_ideal) or pd.isna(value_real):
-                    return False
-                try:
-                    min_val = value_ideal * 0.9
-                    max_val = value_ideal * 1.1
-                    return min_val <= value_real <= max_val
-                except:
-                    return False
+            
+           # Función para aplicar el estilo condiciona
 
-            # Función para aplicar el estilo condicional
-            def highlight_valor_real(row):
-                val_real = row['valor_real']
-                val_ideal = row['valor_ideal']
-                if pd.isna(val_real) or pd.isna(val_ideal):
-                    return ['' for col in row.index]
-                
-                try:
-                    min_val = val_ideal * 0.9
-                    max_val = val_ideal * 1.1
-                    
-                    if min_val <= val_real <= max_val:
-                        # Calculate the percentage difference within the range (0 to 1)
-                        percentage_diff = (val_real - min_val) / (max_val - min_val)
-                        # Convert the percentage difference into a green shade (from light green to dark green)
-                        green_intensity = int(200 * (1 - percentage_diff)) + 55  # softer green
-                        alpha = 0.5 + 0.5 * percentage_diff  # adjust transparency
-                        color = f'background-color: rgba(0, {green_intensity}, 0, {alpha})'
-                        return [color if col == 'valor_real' else '' for col in row.index]
-                    else:
-                        # Calculate the percentage difference from the nearest bound (min_val or max_val)
-                        if val_real < min_val:
-                            percentage_diff = (min_val - val_real) / val_ideal
-                        else:
-                            percentage_diff = (val_real - max_val) / val_ideal
-                        
-                        # Cap the percentage_diff at 1 (100%) for the gradient calculation
-                        percentage_diff = min(percentage_diff, 1.0)
-                        
-                        # Convert the percentage difference into a red shade (from light red to dark red)
-                        red_intensity = int(200 * percentage_diff) + 55  # softer red
-                        alpha = 0.5 + 0.5 * percentage_diff  # adjust transparency
-                        color = f'background-color: rgba({red_intensity}, 0, 0, {alpha})'
-                        return [color if col == 'valor_real' else '' for col in row.index]
-                except Exception as e:
-                    return ['' for col in row.index]
 
             # Cargar los datos
             # Aquí iría tu código para cargar el DataFrame `filtered_data`
@@ -148,7 +105,7 @@ if st.session_state['estado'] == 'Autorizado':
             data = data.dropna(subset=[variable])
 
             # Obtener el valor medio (valor ideal) de la variable seleccionada
-            valor_ideal = filtered_data.loc[filtered_data['parametro'] == variable, 'valor_ideal'].values[0]
+            valor_ideal = filtered_data.loc[filtered_data['variable'] == variable, 'valor_ideal'].values[0]
             
             valor_ideal_mayor = valor_ideal + 0.1*valor_ideal
             valor_ideal_menor = valor_ideal - 0.1*valor_ideal
