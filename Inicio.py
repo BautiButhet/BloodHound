@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as com
 import base64
-from streamlit_extras.app_logo import add_logo
+from streamlit_extras.let_it_rain import rain 
 
 # Configuración de la página
 #kjsdgkjsdk
@@ -18,14 +18,14 @@ with col15:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
 
-def example():
-    if st.checkbox("Use url", value=True):
-        add_logo("http://placekitten.com/120/120")
-    else:
-        add_logo("gallery/kitty.jpeg", height=300)
-    st.write("👈 Check out the cat in the nav-bar!")
-
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
+
+rain(
+    emoji = "🩸",
+    font_size = 54,
+    falling_speed = 5,
+    animation_length = "infinite",
+)
 
 # Leer la imagen desde el archivo local y convertirla a base64
 def get_base64_of_bin_file(bin_file):
