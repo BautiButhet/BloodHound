@@ -18,7 +18,12 @@ with col15:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
 
-add_logo("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypZVWVC0SkY8QXsmMI0yA38Pxy_9wJXOSNQ&s")
+def example():
+    if st.checkbox("Use url", value=True):
+        add_logo("http://placekitten.com/120/120")
+    else:
+        add_logo("gallery/kitty.jpeg", height=300)
+    st.write("👈 Check out the cat in the nav-bar!")
 
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
 
