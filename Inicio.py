@@ -122,10 +122,10 @@ with tab4:
    st.markdown("""
         <p class="custom-font">
                <ul>
-                    <li>jbbuthet@mail.austral.edu.ar    (+54 9 11 3844-1566)</li>
-                    <li>iricca@mail.austral.edu.ar              (+54 9 3489 36-4147)</li>
-                    <li>goxoby@mail.austral.edu.ar              (+54 9 11 7026-5949)</li>
-                    <li>eqtenreyroanaya@mail.austral.edu.ar     (+54 9 11 2614-1859)</li>
+                    <li>jbbuthet@mail.austral.edu.ar (+54 9 11 3844-1566)</li>
+                    <li>iricca@mail.austral.edu.ar (+54 9 3489 36-4147)</li>
+                    <li>goxoby@mail.austral.edu.ar (+54 9 11 7026-5949)</li>
+                    <li>eqtenreyroanaya@mail.austral.edu.ar (+54 9 11 2614-1859)</li>
              </ul>
             </i></h4>
             </div>
