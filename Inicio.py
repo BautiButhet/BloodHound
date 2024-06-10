@@ -113,7 +113,7 @@ with tab3:
    st.markdown("""
         <p class="custom-font">Somos Gonzalo, Ignacio, Bautista y Emerio, cuatro amigos con una pasión compartida por la 
             salud y la innovación. Somos estudiantes de Ingeniería Biomédica en la Universidad Austral. Durante la materia Ciencia de datos para medicina 
-            realizamos esta aplicación, con el objetivo de aplicar el enfoque de nuestra carrer a la informatica de la materia para el servicio de la medicina.
+            realizamos esta aplicación, con el objetivo de aplicar el enfoque de nuestra carrera a la informatica de la materia, para el servicio de la medicina.
             De esta manera, surgió BloodHound, una aplicación que ayudará a los pacientes a tener un seguimiento personalizado de sus estudios.  
             </i></h4>
     """, unsafe_allow_html=True)
