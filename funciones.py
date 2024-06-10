@@ -20,24 +20,24 @@ def get_db_connection():
     )
     return conn
 
-def insert_user(dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrito, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds):
+def insert_user(dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrit, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds):
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
-            query = query = "INSERT INTO usuarios.pacientes(dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrito, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            cur.execute(query, (dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrito, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds))
+            query = query = "INSERT INTO usuarios.pacientes(dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrit, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            cur.execute(query, (dni, password, nombre, apellido, fecha_nacimiento, genero, altura, peso, colesterol, anemia, sobrepeso, diabetes, fumador,media_red_blood_cc, media_hematocrit, media_insulin, media_two_hour_glucose, media_triglyceride, media_total_cholesterol, media_direct_hdl_cholesterol, media_ldl_cholesterol, media_uric_acid, media_blood_pressure_status, media_blood_pressure_time_seconds))
             conn.commit()
     except psycopg2.Error as e:
         st.error(f"Se produjo un error al guardar el usuario: {e}")
     finally:
         conn.close()
 
-def insert_studio(dni, red_blood_cc, hematocrito, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha):
+def insert_studio(dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha):
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
-            query = "INSERT INTO usuarios.estudios(dni, red_blood_cc, hematocrito, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
-            cur.execute(query, (dni, red_blood_cc, hematocrito, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha))
+            query = "INSERT INTO usuarios.estudios(dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
+            cur.execute(query, (dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha))
             conn.commit()
     except psycopg2.Error as e:
         st.error(f"Se produjo un error al guardar el usuario: {e}")
@@ -89,7 +89,7 @@ def consultar_estudios(dni):
         SELECT 
         usuarios.estudios.*,
         usuarios.pacientes.media_red_blood_cc,
-        usuarios.pacientes.media_hematocrito,
+        usuarios.pacientes.media_hematocrit,
         usuarios.pacientes.media_insulin,
         usuarios.pacientes.media_two_hour_glucose,
         usuarios.pacientes.media_triglyceride,
@@ -157,13 +157,13 @@ WHERE
 UNION ALL
 
 SELECT
-    'hematocrito' AS parametro,
-    usuarios.estudios.hematocrito AS valor_real,
-    usuarios.pacientes.media_hematocrito AS valor_ideal,
+    'hematocrit' AS parametro,
+    usuarios.estudios.hematocrit AS valor_real,
+    usuarios.pacientes.media_hematocrit AS valor_ideal,
     CONCAT(
-        ROUND(CAST(usuarios.pacientes.media_hematocrito * 0.9 AS numeric), 2),
+        ROUND(CAST(usuarios.pacientes.media_hematocrit * 0.9 AS numeric), 2),
         ' - ',
-        ROUND(CAST(usuarios.pacientes.media_hematocrito * 1.1 AS numeric), 2)
+        ROUND(CAST(usuarios.pacientes.media_hematocrit * 1.1 AS numeric), 2)
     ) AS rangos
 FROM
     usuarios.estudios
@@ -401,7 +401,7 @@ def perfil_paciente(fecha_nacimiento,altura, genero, peso, fumador, diabetes):
     print("Subgrupo filtrado:")
 
     media_red_blood_cc = resultado['LBXRBCSI'].mean() if 'LBXRBCSI' in resultado.columns else None
-    media_hematocrito = resultado['LBXHCT'].mean() if 'LBXHCT' in resultado.columns else None
+    media_hematocrit = resultado['LBXHCT'].mean() if 'LBXHCT' in resultado.columns else None
     media_insulin = resultado['LBXIN'].mean() if 'LBXIN' in resultado.columns else None
     media_two_hour_glucose = resultado['LBXGLT'].mean() if 'LBXGLT' in resultado.columns else None
     media_triglyceride = resultado['LBXTR'].mean() if 'LBXTR' in resultado.columns else None
@@ -414,7 +414,7 @@ def perfil_paciente(fecha_nacimiento,altura, genero, peso, fumador, diabetes):
 
     return (
     media_red_blood_cc,
-    media_hematocrito,
+    media_hematocrit,
     media_insulin,
     media_two_hour_glucose,
     media_triglyceride,
