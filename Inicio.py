@@ -1,5 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as com
+import base64
+
 # Configuración de la página
 #kjsdgkjsdk
 st.set_page_config(
@@ -14,8 +16,6 @@ with col1:
 with col15:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
-
-import base64
 
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
 
@@ -84,19 +84,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("""
-    <p class="custom-font">El propósito de esta aplicación es personalizar los
+tab1, tab2, tab3, tab4 = st.tabs(["Acerca de la APP", "A Tener en Cuenta!", "Acerca de Nosotros", "Contactanos"])
+with tab1:
+   st.header("Acerca de la APP")
+   st.markdown("""
+        <p class="custom-font">El propósito de esta aplicación es personalizar los
         datos hematológicos para que sean más comprensibles y accesibles para el paciente.
         Nuestro objetivo es simplificar los análisis de laboratorio, centrándonos principalmente
         en los estudios de sangre, con el fin de evitar confusiones, preocupaciones innecesarias
         y dudas. Para lograr esto, hemos desarrollado un algoritmo que personaliza los datos
         hematológicos según el perfil físico del usuario. De esta manera, el usuario puede ver cómo se
         comportan los análisis de sangre promedio de otros pacientes con características físicas o de salud similares.</i></h4>
-    </div>
-""", unsafe_allow_html=True)
-
-st.markdown("<p style='text-align:center; color:#DC143C;'>Esta herramienta no está diseñada para "
+            </div>
+    """, unsafe_allow_html=True)
+with tab2:
+   st.header("A Tener en Cuenta!")
+   st.markdown("<p style='text-align:center; color:#DC143C;'>Esta herramienta no está diseñada para "
             + "diagnosticar a los pacientes. Es fundamental contar con la participación de personal "
-            + "médico antes de tomar decisiones relacionadas con la salud.</p>", unsafe_allow_html=True)
+            + "médico antes de tomar decisiones relacionadas con la salud.</p>", unsafe_allow_html=True)
+with tab3:
+   st.header("Acerca de Nosotros")
+   st.markdown("""
+        <p class="custom-font">Somos un grupo de amigos que decidio emprenderse.</i></h4>
+            </div>
+    """, unsafe_allow_html=True)
+with tab4:
+   st.header("Contactanos")
+   st.markdown("""
+        <p class="custom-font">jbbuthet@mail.austral.edu.ar.</i></h4>
+            </div>
+    """, unsafe_allow_html=True)
+
 
 com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
