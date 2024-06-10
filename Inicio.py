@@ -121,9 +121,13 @@ with tab3:
 with tab4:
    st.header("Contactanos")
    st.markdown("""
-        <p class="custom-font">jbbuthet@mail.austral.edu.ar<br>
-               iricca@mail.austral.edu.ar<br>
-               goxoby@mail.austral.edu.ar<br>
-               eqtenreyroanaya@mail.austral.edu.ar</i></h4>
+        <p class="custom-font">
+               <ul>
+                    <li>jbbuthet@mail.austral.edu.ar</li>
+                    <li>iricca@mail.austral.edu.ar</li>
+                    <li>goxoby@mail.austral.edu.ar</li>
+                    <li>eqtenreyroanaya@mail.austral.edu.ar</li>
+             </ul>
+            </i></h4>
             </div>
     """, unsafe_allow_html=True)
