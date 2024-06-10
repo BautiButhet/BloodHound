@@ -87,8 +87,8 @@ st.markdown(
 
 tab1, tab2, tab3, tab4 = st.tabs(["Acerca de la APP", "A Tener en Cuenta!", "Acerca de Nosotros", "Contactanos"])
 with tab1:
-   st.header("Acerca de la APP")
-   st.markdown("""
+    st.header("Acerca de la APP")
+    st.markdown("""
         <p class="custom-font">El propósito de esta aplicación es personalizar los
         datos hematológicos para que sean más comprensibles y accesibles para el paciente.
         Nuestro objetivo es simplificar los análisis de laboratorio, centrándonos principalmente
@@ -98,17 +98,38 @@ with tab1:
         comportan los análisis de sangre promedio de otros pacientes con características físicas o de salud similares.</i></h4>
             </div>
     """, unsafe_allow_html=True)
-   com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
-   st.markdown("""
-    <style>
-    .stButton > button {
+    com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
+    st.markdown("""
+        <style>
+        .centered-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height to center vertically */
+        }
+        .stButton > button {
         border: 2px solid red;
         background-color: white;
         color: black;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-   if st.button("Comenzar"):
+        }
+        </style>
+        """, unsafe_allow_html=True)
+    st.markdown("""
+        <div class="centered-button">
+            <button onclick="streamlitRunComenzar()">Comenzar</button>
+        </div>
+        <script>
+        function streamlitRunComenzar() {
+            const buttons = document.querySelectorAll('.stButton button');
+            buttons.forEach(button => {
+                if (button.textContent === 'Comenzar') {
+                    button.click();
+                }
+            });
+        }
+        </script>
+        """, unsafe_allow_html=True)
+    if st.button("Comenzar"):
         st.switch_page("pages/1_Alta_Usuario.py")
 
 with tab2:
