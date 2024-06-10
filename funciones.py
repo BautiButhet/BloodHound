@@ -139,9 +139,9 @@ def consultar_estudios_fecha(dni, fecha):
     
     try:
         query = """SELECT 
-    'red_blood_cc' AS parametro,
-    usuarios.estudios.red_blood_cc AS valor_real,
-    usuarios.pacientes.media_red_blood_cc AS valor_ideal,
+    'red_blood_cc' AS variable,
+    usuarios.estudios.red_blood_cc AS valor del paciente,
+    usuarios.pacientes.media_red_blood_cc AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_red_blood_cc * 0.9 AS numeric), 2),
         ' - ',
@@ -157,9 +157,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'hematocrit' AS parametro,
-    usuarios.estudios.hematocrit AS valor_real,
-    usuarios.pacientes.media_hematocrit AS valor_ideal,
+    'hematocrit' AS variable,
+    usuarios.estudios.hematocrit AS valor del paciente,
+    usuarios.pacientes.media_hematocrit AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_hematocrit * 0.9 AS numeric), 2),
         ' - ',
@@ -175,9 +175,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'insulin' AS parametro,
-    usuarios.estudios.insulin AS valor_real,
-    usuarios.pacientes.media_insulin AS valor_ideal,
+    'insulin' AS variable,
+    usuarios.estudios.insulin AS valor del paciente,
+    usuarios.pacientes.media_insulin AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_insulin * 0.9 AS numeric), 2),
         ' - ',
@@ -193,9 +193,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'two_hour_glucose' AS parametro,
-    usuarios.estudios.two_hour_glucose AS valor_real,
-    usuarios.pacientes.media_two_hour_glucose AS valor_ideal,
+    'two_hour_glucose' AS variable,
+    usuarios.estudios.two_hour_glucose AS valor del paciente,
+    usuarios.pacientes.media_two_hour_glucose AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_two_hour_glucose * 0.9 AS numeric), 2),
         ' - ',
@@ -211,9 +211,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'triglyceride' AS parametro,
-    usuarios.estudios.triglyceride AS valor_real,
-    usuarios.pacientes.media_triglyceride AS valor_ideal,
+    'triglyceride' AS variable,
+    usuarios.estudios.triglyceride AS valor del paciente,
+    usuarios.pacientes.media_triglyceride AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_triglyceride * 0.9 AS numeric), 2),
         ' - ',
@@ -229,9 +229,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'total_cholesterol' AS parametro,
-    usuarios.estudios.total_cholesterol AS valor_real,
-    usuarios.pacientes.media_total_cholesterol AS valor_ideal,
+    'total_cholesterol' AS variable,
+    usuarios.estudios.total_cholesterol AS valor del paciente,
+    usuarios.pacientes.media_total_cholesterol AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_total_cholesterol * 0.9 AS numeric), 2),
         ' - ',
@@ -247,9 +247,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'direct_hdl_cholesterol' AS parametro,
-    usuarios.estudios.direct_hdl_cholesterol AS valor_real,
-    usuarios.pacientes.media_direct_hdl_cholesterol AS valor_ideal,
+    'direct_hdl_cholesterol' AS variable,
+    usuarios.estudios.direct_hdl_cholesterol AS valor del paciente,
+    usuarios.pacientes.media_direct_hdl_cholesterol AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_direct_hdl_cholesterol * 0.9 AS numeric), 2),
         ' - ',
@@ -265,9 +265,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'ldl_cholesterol' AS parametro,
-    usuarios.estudios.ldl_cholesterol AS valor_real,
-    usuarios.pacientes.media_ldl_cholesterol AS valor_ideal,
+    'ldl_cholesterol' AS variable,
+    usuarios.estudios.ldl_cholesterol AS valor del paciente,
+    usuarios.pacientes.media_ldl_cholesterol AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_ldl_cholesterol * 0.9 AS numeric), 2),
         ' - ',
@@ -283,9 +283,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'uric_acid' AS parametro,
-    usuarios.estudios.uric_acid AS valor_real,
-    usuarios.pacientes.media_uric_acid AS valor_ideal,
+    'uric_acid' AS variable,
+    usuarios.estudios.uric_acid AS valor del paciente,
+    usuarios.pacientes.media_uric_acid AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_uric_acid * 0.9 AS numeric), 2),
         ' - ',
@@ -301,9 +301,9 @@ WHERE
 UNION ALL
 
 SELECT
-    'blood_pressure_status' AS parametro,
-    usuarios.estudios.blood_pressure_status AS valor_real,
-    usuarios.pacientes.media_blood_pressure_status AS valor_ideal,
+    'blood_pressure_status' AS variable,
+    usuarios.estudios.blood_pressure_status AS valor del paciente,
+    usuarios.pacientes.media_blood_pressure_status AS valores medios,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_blood_pressure_status * 0.9 AS numeric), 2),
         ' - ',
@@ -312,27 +312,6 @@ SELECT
 FROM
     usuarios.estudios
 INNER JOIN
-    usuarios.pacientes ON usuarios.estudios.dni = usuarios.pacientes.dni
-WHERE
-    usuarios.estudios.dni = %s AND usuarios.estudios.fecha = %s
-
-UNION ALL
-
-SELECT
-    'blood_pressure_time_seconds' AS parametro,
-    usuarios.estudios.blood_pressure_time_seconds AS valor_real,
-    usuarios.pacientes.media_blood_pressure_time_seconds AS valor_ideal,
-    CONCAT(
-        ROUND(CAST(usuarios.pacientes.media_blood_pressure_time_seconds * 0.9 AS numeric), 2),
-        ' - ',
-        ROUND(CAST(usuarios.pacientes.media_blood_pressure_time_seconds * 1.1 AS numeric), 2)
-    ) AS rangos
-FROM
-    usuarios.estudios
-INNER JOIN
-    usuarios.pacientes ON usuarios.estudios.dni = usuarios.pacientes.dni
-WHERE
-    usuarios.estudios.dni = %s AND usuarios.estudios.fecha = %s
 
         """
 
