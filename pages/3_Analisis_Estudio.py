@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from funciones import dni_exists,password_exists,consultar_estudios,consultar_estudios_fecha
-import base64
 
 st.set_page_config(
     page_title="BloodHound: Track your Blood",
@@ -18,35 +17,6 @@ with col1:
 with col15:
     if st.button("🏠"):
         st.switch_page("Inicio.py")
-
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-# Ruta a tu imagen local
-img_path = "papers.co-sm55-pastel-blue-red-morning-blur-gradation-28-wallpaper.jpg"
-
-# Convertir la imagen a base64
-img_base64 = get_base64_of_bin_file(img_path)
-
-# Crear el estilo CSS con la imagen base64
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img_base64}");
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
-background-attachment: local;
-}}
-[data-testid="stHeader"] {{
-background: rgba(0,0,0,0);
-}}
-</style>
-"""
-# Insertar el estilo CSS en la aplicación de Streamlit
-st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title('Visualización de Estudios')
 if 'estado' not in st.session_state:
@@ -149,9 +119,9 @@ if st.session_state['estado'] == 'Autorizado':
 
             # Obtener el valor medio (valor ideal) de la variable seleccionada
             valor_ideal = filtered_data.loc[filtered_data['parametro'] == variable, 'valor_ideal'].values[0]
-            
-            valor_ideal_mayor = valor_ideal + 0.1*valor_ideal
-            valor_ideal_menor = valor_ideal - 0.1*valor_ideal
+            valor_ideal_mayor = valor_ideal *0.3 + valor_ideal
+            valor_ideal_menor = valor_ideal - valor_ideal*0.3
+
             # Crear el gráfico de líneas
             line = alt.Chart(data).mark_line().encode(
                 x=alt.X('fecha:T', axis=alt.Axis(title='Fecha de estudio', format='%d/%m/%Y')),
@@ -173,8 +143,7 @@ if st.session_state['estado'] == 'Autorizado':
                 y='y:Q'
             )
             mean_line_menor = alt.Chart(pd.DataFrame({'y': [valor_ideal_menor]})).mark_rule(color='red').encode(
-                y='y:Q'
-            )
+                y='y:Q')
             # Crear el texto para la línea de valor ideal
             text = alt.Chart(pd.DataFrame({
                 'y': [valor_ideal], 
