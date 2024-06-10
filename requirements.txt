@@ -23,7 +23,7 @@ packaging==24.0
 pandas==2.2.2
 pillow==10.3.0
 protobuf==4.25.3
-psycopg2-binary
+psycopg2-binary==2.9.7  # Añadido psycopg2-binary con versión específica
 pyarrow==16.0.0
 pydeck==0.9.0b0
 Pygments==2.17.2
@@ -38,6 +38,7 @@ smmap==5.0.1
 SQLAlchemy==2.0.30
 st-pages==0.4.5
 streamlit==1.35.0
+streamlit-extras==0.1.1  # Añadido streamlit-extras con versión específica
 tenacity==8.2.3
 toml==0.10.2
 toolz==0.12.1
