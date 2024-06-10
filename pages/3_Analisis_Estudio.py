@@ -1,9 +1,24 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+from funciones import dni_exists,password_exists,consultar_estudios,consultar_estudios_fecha
 import base64
 
-from funciones import dni_exists,password_exists,consultar_estudios,consultar_estudios_fecha
+st.set_page_config(
+    page_title="BloodHound: Track your Blood",
+    page_icon=":🩸:",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
+col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15 = st.columns(15)
+with col1:
+    if st.button("🡄"):
+        st.switch_page("pages/2_Cargar_Estudio.py")
+
+with col15:
+    if st.button("🏠"):
+        st.switch_page("Inicio.py")
+
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -32,20 +47,6 @@ background: rgba(0,0,0,0);
 """
 # Insertar el estilo CSS en la aplicación de Streamlit
 st.markdown(page_bg_img, unsafe_allow_html=True)
-st.set_page_config(
-    page_title="BloodHound: Track your Blood",
-    page_icon=":🩸:",
-    layout="wide",
-    initial_sidebar_state="collapsed",
-)
-col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15 = st.columns(15)
-with col1:
-    if st.button("🡄"):
-        st.switch_page("pages/2_Cargar_Estudio.py")
-
-with col15:
-    if st.button("🏠"):
-        st.switch_page("Inicio.py")
 
 st.title('Visualización de Estudios')
 if 'estado' not in st.session_state:
@@ -148,9 +149,9 @@ if st.session_state['estado'] == 'Autorizado':
 
             # Obtener el valor medio (valor ideal) de la variable seleccionada
             valor_ideal = filtered_data.loc[filtered_data['parametro'] == variable, 'valor_ideal'].values[0]
-            valor_ideal_mayor = valor_ideal *0.3 + valor_ideal
-            valor_ideal_menor = valor_ideal - valor_ideal*0.3
-
+            
+            valor_ideal_mayor = valor_ideal + 0.1*valor_ideal
+            valor_ideal_menor = valor_ideal - 0.1*valor_ideal
             # Crear el gráfico de líneas
             line = alt.Chart(data).mark_line().encode(
                 x=alt.X('fecha:T', axis=alt.Axis(title='Fecha de estudio', format='%d/%m/%Y')),
@@ -172,7 +173,8 @@ if st.session_state['estado'] == 'Autorizado':
                 y='y:Q'
             )
             mean_line_menor = alt.Chart(pd.DataFrame({'y': [valor_ideal_menor]})).mark_rule(color='red').encode(
-                y='y:Q')
+                y='y:Q'
+            )
             # Crear el texto para la línea de valor ideal
             text = alt.Chart(pd.DataFrame({
                 'y': [valor_ideal], 
