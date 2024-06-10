@@ -225,4 +225,4 @@ if (password == confirm_password) and dni != '' and password != '':
             st.switch_page("pages/2_Cargar_Estudio.py")
 
     with col2:
-    st.markdown(iframe_html, unsafe_allow_html=True)
+        st.markdown(iframe_html, unsafe_allow_html=True)
