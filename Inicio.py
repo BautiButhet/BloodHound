@@ -1,8 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as com
 import base64
-from streamlit_extras.let_it_rain import rain 
-from streamlit_extras.app_logo import add_logo
 
 # Configuración de la página
 #kjsdgkjsdk
@@ -21,14 +19,6 @@ with col15:
 
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
 
-add_logo("C:/Users/josef/OneDrive/Documents/PALI/Prueba_Austral - copia/Prueba_Austral - copia/pages/descarga.jpg")
-
-rain(
-    emoji = "🩸",
-    font_size = 54,
-    falling_speed = 5,
-    animation_length = "infinite",
-)
 
 # Leer la imagen desde el archivo local y convertirla a base64
 def get_base64_of_bin_file(bin_file):
