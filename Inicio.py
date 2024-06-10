@@ -78,6 +78,7 @@ st.markdown(
         font-family: 'Poppins', sans-serif;
         font-size: 20px;
         color: #000000;
+        text-align:justify
     }
     </style>
     """,
