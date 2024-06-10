@@ -108,10 +108,22 @@ with tab3:
    st.header("Acerca de Nosotros")
    st.markdown("""
         <p class="custom-font">Somos Gonzalo, Ignacio, Bautista y Emerio, cuatro amigos con una pasión compartida por la 
+<<<<<<< Updated upstream
             salud y la innovación. Somos estudiantes de Ingeniería Biomédica en la Universidad Austral. Durante la materia Ciencia de datos para medicina 
             realizamos esta aplicación, con el objetivo de aplicar el enfoque de nuestra carrer a la informatica de la materia para el servicio de la medicina.
             De esta manera, surgió BloodHound, una aplicación que ayudará a los pacientes a tener un seguimiento personalizado de sus estudios.  
             </i></h4>
+=======
+            salud y la innovación. Nos encontrabamos en el curso de ciencia de datos en medicina intercambiabando ideas y reflexionando
+            sobre cómo podiamos aplicar nuestros conocimientos técnicos para mejorar la atención médica. Fue entonces cuando Bautista 
+            recordó una experiencia personal: su frustración al intentar comprender los resultados de un análisis
+            de sangre poco claro. Gonzalo, sugirió que podriamos crear una herramienta que ayudara a las personas a entender mejor 
+            sus análisis de sangre y a su vez monitorear su salud de manera precisa. El entusiasmo de Ignacio y Emerio se sumó rápidamente a la 
+            conversación, y pronto estaban debatiendo cómo podrían diseñar una plataforma accesible y fácil de usar que brindara 
+            información útil y personalizada sobre los valores sanguíneos. De esta manera, la idea de emprender en una plataforma para medir de forma 
+            precisa los valores de la sangre, y así mejorar la calidad de vida y conocimiento sobre la salud de las personas, comenzó a tomar forma entre 
+            risas y camaradería. Fue asi que surgio BloodHound.</i></h4>
+>>>>>>> Stashed changes
             </div>
     """, unsafe_allow_html=True)
 with tab4:
