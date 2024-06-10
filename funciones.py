@@ -139,7 +139,7 @@ def consultar_estudios_fecha(dni, fecha):
     
     try:
         query = """SELECT 
-    'red_blood_cc' AS parametro,
+    'red_blood_cc' AS RED BLOOD,
     usuarios.estudios.red_blood_cc AS valor_real,
     usuarios.pacientes.media_red_blood_cc AS valor_ideal,
     CONCAT(
