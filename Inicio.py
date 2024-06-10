@@ -101,9 +101,13 @@ with tab1:
    com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
 with tab2:
    st.header("A Tener en Cuenta!")
-   st.markdown("<p style='text-align:justify; color:#DC143C; font-size: 20px'>Esta herramienta no está diseñada para "
-            + "diagnosticar a los pacientes. Es fundamental contar con la participación de personal "
-            + "médico antes de tomar decisiones relacionadas con la salud.</p>", unsafe_allow_html=True)
+   st.markdown("""
+    <div style='border:2px solid #DC143C; padding:10px; border-radius:5px; background-color: #ffcccb;'>
+        <p class="custom-font">
+            Esta herramienta no está diseñada para diagnosticar a los pacientes. Es fundamental contar con la participación de personal médico antes de tomar decisiones relacionadas con la salud.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 with tab3:
    st.header("Acerca de Nosotros")
    st.markdown("""
