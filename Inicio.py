@@ -99,6 +99,18 @@ with tab1:
             </div>
     """, unsafe_allow_html=True)
    com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
+   st.markdown("""
+    <style>
+    .stButton > button {
+        border: 2px solid red;
+        background-color: white;
+        color: black;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+   if st.button("Comenzar"):
+        st.switch_page("pages/1_Alta_Usuario.py")
+
 with tab2:
    st.header("A Tener en Cuenta!")
    st.markdown("""
