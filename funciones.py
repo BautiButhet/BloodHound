@@ -32,12 +32,12 @@ def insert_user(dni, password, nombre, apellido, fecha_nacimiento, genero, altur
     finally:
         conn.close()
 
-def insert_studio(dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha):
+def insert_studio(dni, globulos_rojos, hematocrito, insulina, glucosa_en_ayunas, trigliceridos, colesterol_total, colesterol_hdl_directo, colesterol_ldl, acido_urico, estado_presion_arterial, tiempo_presion_arterial_segundos,fecha):
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
-            query = "INSERT INTO usuarios.estudios(dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
-            cur.execute(query, (dni, red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha))
+            query = "INSERT INTO usuarios.estudios(dni, globulos_rojos, hematocrito, insulina, glucosa_en_ayunas, trigliceridos, colesterol_total, colesterol_hdl_directo, colesterol_ldl, acido_urico, estado_presion_arterial, tiempo_presion_arterial_segundos,fecha) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
+            cur.execute(query, (dni, globulos_rojos, hematocrito, insulina, glucosa_en_ayunas, trigliceridos, colesterol_total, colesterol_hdl_directo, colesterol_ldl, acido_urico, estado_presion_arterial, tiempo_presion_arterial_segundos,fecha))
             conn.commit()
     except psycopg2.Error as e:
         st.error(f"Se produjo un error al guardar el usuario: {e}")
@@ -139,8 +139,8 @@ def consultar_estudios_fecha(dni, fecha):
     
     try:
         query = """SELECT 
-    'red_blood_cc' AS variable,
-    usuarios.estudios.red_blood_cc AS valor_real,
+    'globulos_rojos' AS variable,
+    usuarios.estudios.globulos_rojos AS valor_real,
     usuarios.pacientes.media_red_blood_cc AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_red_blood_cc * 0.9 AS numeric), 2),
@@ -157,8 +157,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'hematocrit' AS variable,
-    usuarios.estudios.hematocrit AS valor_real,
+    'hematocrito' AS variable,
+    usuarios.estudios.hematocrito AS valor_real,
     usuarios.pacientes.media_hematocrit AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_hematocrit * 0.9 AS numeric), 2),
@@ -175,8 +175,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'insulin' AS variable,
-    usuarios.estudios.insulin AS valor_real,
+    'insulina' AS variable,
+    usuarios.estudios.insulina AS valor_real,
     usuarios.pacientes.media_insulin AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_insulin * 0.9 AS numeric), 2),
@@ -193,8 +193,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'two_hour_glucose' AS variable,
-    usuarios.estudios.two_hour_glucose AS valor_real,
+    'glucosa_en_ayunas' AS variable,
+    usuarios.estudios.glucosa_en_ayunas AS valor_real,
     usuarios.pacientes.media_two_hour_glucose AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_two_hour_glucose * 0.9 AS numeric), 2),
@@ -211,8 +211,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'triglyceride' AS variable,
-    usuarios.estudios.triglyceride AS valor_real,
+    'trigliceridos' AS variable,
+    usuarios.estudios.trigliceridos AS valor_real,
     usuarios.pacientes.media_triglyceride AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_triglyceride * 0.9 AS numeric), 2),
@@ -229,8 +229,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'total_cholesterol' AS variable,
-    usuarios.estudios.total_cholesterol AS valor_real,
+    'colesterol_total' AS variable,
+    usuarios.estudios.colesterol_total AS valor_real,
     usuarios.pacientes.media_total_cholesterol AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_total_cholesterol * 0.9 AS numeric), 2),
@@ -247,8 +247,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'direct_hdl_cholesterol' AS variable,
-    usuarios.estudios.direct_hdl_cholesterol AS valor_real,
+    'colesterol_hdl_directo' AS variable,
+    usuarios.estudios.colesterol_hdl_directo AS valor_real,
     usuarios.pacientes.media_direct_hdl_cholesterol AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_direct_hdl_cholesterol * 0.9 AS numeric), 2),
@@ -265,8 +265,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'ldl_cholesterol' AS variable,
-    usuarios.estudios.ldl_cholesterol AS valor_real,
+    'colesterol_ldl' AS variable,
+    usuarios.estudios.colesterol_ldl AS valor_real,
     usuarios.pacientes.media_ldl_cholesterol AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_ldl_cholesterol * 0.9 AS numeric), 2),
@@ -283,8 +283,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'uric_acid' AS variable,
-    usuarios.estudios.uric_acid AS valor_real,
+    'acido_urico' AS variable,
+    usuarios.estudios.acido_urico AS valor_real,
     usuarios.pacientes.media_uric_acid AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_uric_acid * 0.9 AS numeric), 2),
@@ -301,8 +301,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'blood_pressure_status' AS variable,
-    usuarios.estudios.blood_pressure_status AS valor_real,
+    'estado_presion_arterial' AS variable,
+    usuarios.estudios.estado_presion_arterial AS valor_real,
     usuarios.pacientes.media_blood_pressure_status AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_blood_pressure_status * 0.9 AS numeric), 2),
@@ -319,8 +319,8 @@ WHERE
 UNION ALL
 
 SELECT
-    'blood_pressure_time_seconds' AS variable,
-    usuarios.estudios.blood_pressure_time_seconds AS valor_real,
+    'tiempo_presion_arterial_segundos' AS variable,
+    usuarios.estudios.tiempo_presion_arterial_segundos AS valor_real,
     usuarios.pacientes.media_blood_pressure_time_seconds AS valor_ideal,
     CONCAT(
         ROUND(CAST(usuarios.pacientes.media_blood_pressure_time_seconds * 0.9 AS numeric), 2),
