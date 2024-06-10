@@ -97,6 +97,7 @@ with tab1:
         comportan los análisis de sangre promedio de otros pacientes con características físicas o de salud similares.</i></h4>
             </div>
     """, unsafe_allow_html=True)
+   com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
 with tab2:
    st.header("A Tener en Cuenta!")
    st.markdown("<p style='text-align:center; color:#DC143C;'>Esta herramienta no está diseñada para "
@@ -105,15 +106,24 @@ with tab2:
 with tab3:
    st.header("Acerca de Nosotros")
    st.markdown("""
-        <p class="custom-font">Somos un grupo de amigos que decidio emprenderse.</i></h4>
+        <p class="custom-font">Somos Gonzalo, Ignacio, Bautista y Emerio, cuatro amigos con una pasión compartida por la 
+            salud y la innovación, nos encontrabamos en el curso de ciencia de datos en medicina intercambiaban ideas y reflexionaban 
+            sobre cómo podrían aplicar sus conocimientos técnicos para mejorar la atención médica. Fue entonces cuando Bautista 
+            recordó una experiencia personal: su frustración al intentar comprender los resultados de un análisis
+            de sangre poco claro. Gonzalo, sugirió que podrían crear una herramienta que ayudara a las personas a entender mejor 
+            sus análisis de sangre y a su vez monitorear su salud de manera precisa. El entusiasmo de Ignacio y Emerio se sumó rápidamente a la 
+            conversación, y pronto estaban debatiendo cómo podrían diseñar una plataforma accesible y fácil de usar que brindara 
+            información útil y personalizada sobre los valores sanguíneos. De esta manera, la idea de emprender en una plataforma para medir de forma 
+            precisa los valores de la sangre, y así mejorar la calidad de vida y conocimiento sobre la salud de las personas, comenzó a tomar forma entre 
+            risas y camaradería. Fue asi que surgio BloodHound.</i></h4>
             </div>
     """, unsafe_allow_html=True)
 with tab4:
    st.header("Contactanos")
    st.markdown("""
-        <p class="custom-font">jbbuthet@mail.austral.edu.ar.</i></h4>
+        <p class="custom-font">jbbuthet@mail.austral.edu.ar\n
+               iricca@mail.austral.edu.ar\n
+               goxoby@mail.austral.edu.ar\n
+               eqtenreyroanaya@mail.austral.edu.ar</i></h4>
             </div>
     """, unsafe_allow_html=True)
-
-
-com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
