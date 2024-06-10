@@ -88,8 +88,8 @@ if st.session_state['estado'] == 'Autorizado':
     output_fecha_nacimiento = st.empty()
     red_blood_cc = st.text_input("Eritrocito (millon de celulas/uL) ", value=None, placeholder="0")
     output_red_blood = st.empty()
-    hematocrit = st.text_input("Hematocrito (%)", value=None, placeholder="0")
-    output_hematocrit = st.empty()
+    hematocrito = st.text_input("Hematocrito (%)", value=None, placeholder="0")
+    output_hematocrito = st.empty()
     insulin = st.text_input("Insulina (uU/mL)", value=None, placeholder="0")
     output_insulin = st.empty()
     two_hour_glucose = st.text_input("Glucosa a las dos horas", value=None, placeholder="0")
@@ -118,8 +118,8 @@ if st.session_state['estado'] == 'Autorizado':
             output_red_blood.error("Error, por favor completa este campo correctamente.")
             error_message += "Eritrocitos, "
 
-        if not hematocrit == None and not hematocrit.isdigit():
-            output_hematocrit.error("Error, por favor completa este campo correctamente.")
+        if not hematocrito == None and not hematocrito.isdigit():
+            output_hematocrito.error("Error, por favor completa este campo correctamente.")
             error_message += "Hematocrito, "
 
         if not insulin == None and not insulin.isdigit():
@@ -169,7 +169,7 @@ if st.session_state['estado'] == 'Autorizado':
             st.toast('...')
             time.sleep(.75)
             st.toast("¡Datos guardados exitosamente!", icon='🎉')
-            insert_studio(dni,red_blood_cc, hematocrit, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha)
+            insert_studio(dni,red_blood_cc, hematocrito, insulin, two_hour_glucose, triglyceride, total_cholesterol, direct_hdl_cholesterol, ldl_cholesterol, uric_acid, blood_pressure_status, blood_pressure_time_seconds,fecha)
             st.success("Guardado exitoso! Aguarde unos instantes...")
             time.sleep(2.5)
             st.switch_page("pages/3_Analisis_Estudio.py")

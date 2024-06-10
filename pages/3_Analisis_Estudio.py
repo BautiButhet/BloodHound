@@ -137,7 +137,7 @@ if st.session_state['estado'] == 'Autorizado':
         with col2:
             st.subheader('Gráficos')
             variable = st.selectbox('*Selecciona la variable que quieras analizar*', (
-                'red_blood_cc', 'hematocrit', 'insulin', 'fasting_glucose', 
+                'red_blood_cc', 'hematocrito', 'insulin', 'fasting_glucose', 
                 'triglyceride', 'total_cholesterol', 'direct_hdl_cholesterol', 
                 'ldl_cholesterol', 'uric_acid', 'blood_pressure_status', 
                 'blood_pressure_time_seconds'
