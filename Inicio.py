@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as com
 import base64
+from streamlit_extras.app_logo import add_logo
 
 # Configuración de la página
 #kjsdgkjsdk
@@ -16,6 +17,8 @@ with col1:
 with col15:
     if st.button("🡆"):
         st.switch_page("pages/1_Alta_Usuario.py")
+
+add_logo("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypZVWVC0SkY8QXsmMI0yA38Pxy_9wJXOSNQ&s")
 
 com.iframe("https://lottie.host/embed/cc2e07bb-dd32-484b-933b-a71b7b7ecb5d/I3fXQsSh9W.json")
 
