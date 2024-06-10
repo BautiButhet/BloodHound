@@ -101,12 +101,6 @@ with tab1:
     com.iframe("https://lottie.host/embed/962dbca4-1021-4512-87fd-79f6c30bde75/Mwbl6U1ODr.json")
     st.markdown("""
         <style>
-        .centered-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* Full viewport height to center vertically */
-        }
         .stButton > button {
         border: 2px solid red;
         background-color: white;
@@ -114,23 +108,11 @@ with tab1:
         }
         </style>
         """, unsafe_allow_html=True)
-    st.markdown("""
-        <div class="centered-button">
-            <button onclick="streamlitRunComenzar()">Comenzar</button>
-        </div>
-        <script>
-        function streamlitRunComenzar() {
-            const buttons = document.querySelectorAll('.stButton button');
-            buttons.forEach(button => {
-                if (button.textContent === 'Comenzar') {
-                    button.click();
-                }
-            });
-        }
-        </script>
-        """, unsafe_allow_html=True)
-    if st.button("Comenzar"):
-        st.switch_page("pages/1_Alta_Usuario.py")
+    col1, col2,col3,col4,col5,col6,col7 = st.columns(7)
+    with col4:
+        if st.button("Comenzar"):
+            st.switch_page("pages/1_Alta_Usuario.py")
+
 
 with tab2:
    st.header("A Tener en Cuenta!")
