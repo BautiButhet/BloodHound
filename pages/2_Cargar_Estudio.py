@@ -84,7 +84,7 @@ with col5:
 if st.session_state['estado'] == 'Autorizado':
     error_message = ""
     st.subheader(f"Bienvenido {get_nombre(dni)}, puede cargar sus datos")
-    fecha = st.date_input("Indique fecha en que se realizo el estudio]", min_value=datetime(1900, 1, 1), max_value=datetime.today(), value=None)
+    fecha = st.date_input("Indique la fecha en que se realizo el estudio", min_value=datetime(1900, 1, 1), max_value=datetime.today(), value=None)
     output_fecha_nacimiento = st.empty()
     red_blood_cc = st.text_input("Eritrocito (millon de celulas/uL) ", value=None, placeholder="0")
     output_red_blood = st.empty()
@@ -111,7 +111,7 @@ if st.session_state['estado'] == 'Autorizado':
 
     if st.button("Guardar"):
         if not fecha:
-            output_fecha_nacimiento.error("Error, por favor selecciona la fecha en l;a que se realizo el estudio.")
+            output_fecha_nacimiento.error("Error, por favor selecciona la fecha en la que se realizo el estudio.")
             error_message += "Fecha de Nacimiento, "
 
         if not red_blood_cc == None and not red_blood_cc.isdigit():
